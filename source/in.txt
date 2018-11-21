@@ -1,0 +1,24 @@
+/*funcion entero sum(entero a, entero b) hacer
+    retornar a+b;
+fin_funcion
+*/
+
+
+funcion_principal
+
+    entero a = 1;
+
+    /*para(a = 12 ; a < 20 ; 2) hacer
+        imprimir(a);
+    fin_para*/
+    /*hacer
+        imprimir("hallo");
+    mientras(a < 10);*/
+
+    mientras(a<10) hacer
+        //imprimir("hallo");
+        a = a + 1;
+    fin_mientras
+
+
+fin_principal
