@@ -11,14 +11,15 @@ funcion_principal
     /*para(a = 12 ; a < 20 ; 2) hacer
         imprimir(a);
     fin_para*/
-    /*hacer
+    hacer
         imprimir("hallo");
-    mientras(a < 10);*/
-
-    mientras(a<10) hacer
-        //imprimir("hallo");
         a = a + 1;
-    fin_mientras
+    mientras(a < 10);
+
+    /*mientras(a < 10) hacer
+        imprimir("hallo");
+        a = a + 1;
+    fin_mientras*/
 
 
 fin_principal

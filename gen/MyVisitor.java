@@ -435,21 +435,29 @@ public class MyVisitor<T> extends PsicoderBaseVisitor {
         System.out.println("in while");
         if (ctx.TK_MIENTRAS() != null) {
 
-            //String op = ctx.condicion().logico().getText();
-            //String var = ctx.condicion().ID().getText();
-            //double valor = Double.parseDouble(ctx.condicion().otrascond().valor().getText());
-            // valor de la varuable
-            //double value = Double.parseDouble((String) table.get(var));
-            //System.out.println("valor de a en la table: "+value);
-            /*
+            String op = ctx.condicion().logico().getText();
+            String var = ctx.condicion().ID().getText();
+            double valor = Double.parseDouble(ctx.condicion().otrascond().valor().getText());
+             //valor de la variable
+            double value = Double.parseDouble((String) table.get(var));
+            System.out.println("valor de a en la table: "+value);
+
             boolean cod = false;
             switch (op){
                 case "<":
                     cod = value < valor ;
                     while (cod){
-                        cod = value < valor ;
+                        cod = value < valor;
                         visitCode(ctx.code());
-                        value ++;
+                        int aumento = 0;
+                        if(ctx.code().declaracion()==null){
+                        }else{
+                            String aum =ctx.code().declaracion(0).simple().esperado().ID().getText();
+                            if(aum.equals(var))
+                                aumento = Integer.parseInt(ctx.code().declaracion(0).simple().esperado().siguiente().eleccion().aritmetico().operacion().valor(0).getText());
+
+                        }
+                        value = value + aumento;
                     }
                     break;
                 case "<=":
@@ -457,47 +465,50 @@ public class MyVisitor<T> extends PsicoderBaseVisitor {
                     while (cod){
                         cod = value <= valor ;
                         visitCode(ctx.code());
-                        value ++;
+                        int aumento = 0;
+                        if(ctx.code().declaracion()==null){
+                        }else{
+                            String aum =ctx.code().declaracion(0).simple().esperado().ID().getText();
+                            if(aum.equals(var))
+                                aumento = Integer.parseInt(ctx.code().declaracion(0).simple().esperado().siguiente().eleccion().aritmetico().operacion().valor(0).getText());
+
+                        }
+                        value = value + aumento;
                     }
                     break;
                 case ">":
                     cod = value > valor;
                     while (cod){
-                        cod = value > valor ;
+                        cod = value > valor;
                         visitCode(ctx.code());
-                        value ++;
+                        int aumento = 0;
+                        if(ctx.code().declaracion()==null){
+                        }else{
+                            String aum =ctx.code().declaracion(0).simple().esperado().ID().getText();
+                            if(aum.equals(var))
+                                aumento = Integer.parseInt(ctx.code().declaracion(0).simple().esperado().siguiente().eleccion().aritmetico().operacion().valor(0).getText());
+
+                        }
+                        value = value + aumento;
                     }
                     break;
                 case ">=":
                     cod = value >= valor;
                     while (cod){
-                        cod = value >= valor ;
+                        cod = value >= valor;
                         visitCode(ctx.code());
-                        value ++;
+                        int aumento = 0;
+                        if(ctx.code().declaracion()==null){
+                        }else{
+                            String aum =ctx.code().declaracion(0).simple().esperado().ID().getText();
+                            if(aum.equals(var))
+                                aumento = Integer.parseInt(ctx.code().declaracion(0).simple().esperado().siguiente().eleccion().aritmetico().operacion().valor(0).getText());
+
+                        }
+                        value = value + aumento;
                     }
                     break;
             }
-            */
-            visitCode(ctx.code());
-            //System.out.println("condicion:: "+ctx.condicion().getText());
-            if(ctx.code().declaracion()==null){
-
-            }else{
-                if(ctx.code().declaracion(0).simple().esperado().ID().getText()==var){
-                    
-                }
-                System.out.println("si hay algo");
-            }
-            System.out.println("code: "+);
-
-            /*boolean a=true;
-            while(a){
-                a = i < 5;
-                System.out.println(i);
-                i= i +1 ;
-            }*/
-            System.out.println(ctx.condicion().ID().getText());
-
             return null;
         }
         return (T) super.visitWhiley(ctx);
@@ -506,7 +517,82 @@ public class MyVisitor<T> extends PsicoderBaseVisitor {
     @Override
     public T visitDo_whiley(PsicoderParser.Do_whileyContext ctx) {
         if (ctx.TK_HACER() != null) {
-            return visitCode(ctx.code());
+            String op = ctx.condicion().logico().getText();
+            String var = ctx.condicion().ID().getText();
+            double valor = Double.parseDouble(ctx.condicion().otrascond().valor().getText());
+            //valor de la variable
+            double value = Double.parseDouble((String) table.get(var));
+            System.out.println("valor de a en la table: "+value);
+
+            boolean cod = false;
+            switch (op){
+                case "<":
+                    //cod = value < valor ;
+                    do{
+                        cod = value < valor;
+                        visitCode(ctx.code());
+                        int aumento = 0;
+                        if(ctx.code().declaracion()==null){
+                        }else{
+                            String aum =ctx.code().declaracion(0).simple().esperado().ID().getText();
+                            if(aum.equals(var))
+                                aumento = Integer.parseInt(ctx.code().declaracion(0).simple().esperado().siguiente().eleccion().aritmetico().operacion().valor(0).getText());
+
+                        }
+                        value = value + aumento;
+                    }while (cod);
+                    break;
+                case "<=":
+                    //cod = value <= valor;
+                    do{
+                        cod = value <= valor ;
+                        visitCode(ctx.code());
+                        int aumento = 0;
+                        if(ctx.code().declaracion()==null){
+                        }else{
+                            String aum =ctx.code().declaracion(0).simple().esperado().ID().getText();
+                            if(aum.equals(var))
+                                aumento = Integer.parseInt(ctx.code().declaracion(0).simple().esperado().siguiente().eleccion().aritmetico().operacion().valor(0).getText());
+
+                        }
+                        value = value + aumento;
+                    }while (cod);
+                    break;
+                case ">":
+                    cod = value > valor;
+                    do{
+                        cod = value > valor;
+                        visitCode(ctx.code());
+                        int aumento = 0;
+                        if(ctx.code().declaracion()==null){
+                        }else{
+                            String aum =ctx.code().declaracion(0).simple().esperado().ID().getText();
+                            if(aum.equals(var))
+                                aumento = Integer.parseInt(ctx.code().declaracion(0).simple().esperado().siguiente().eleccion().aritmetico().operacion().valor(0).getText());
+
+                        }
+                        value = value + aumento;
+                    }while (cod);
+                    break;
+                case ">=":
+                    cod = value >= valor;
+                    do{
+                        cod = value >= valor;
+                        visitCode(ctx.code());
+                        int aumento = 0;
+                        if(ctx.code().declaracion()==null){
+                        }else{
+                            String aum =ctx.code().declaracion(0).simple().esperado().ID().getText();
+                            if(aum.equals(var))
+                                aumento = Integer.parseInt(ctx.code().declaracion(0).simple().esperado().siguiente().eleccion().aritmetico().operacion().valor(0).getText());
+
+                        }
+                        value = value + aumento;
+                    }while (cod);
+                    break;
+            }
+            return null;
+
         }
         return (T) super.visitDo_whiley(ctx);
     }
