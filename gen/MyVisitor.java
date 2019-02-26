@@ -666,7 +666,8 @@ public class MyVisitor<T> extends PsicoderBaseVisitor {
     public T visitLogico(PsicoderParser.LogicoContext ctx) {
 
         if (ctx.TK_MENOR() != null) {
-            return (T) ctx.TK_MENOR().getText();
+            // Hallo i am a comment
+	    return (T) ctx.TK_MENOR().getText();
         } else if (ctx.TK_MAYOR() != null) {
             return (T) ctx.TK_MAYOR().getText();
         } else if (ctx.TK_MENOR_IGUAL() != null) {

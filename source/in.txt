@@ -14,6 +14,7 @@ funcion_principal
     hacer
         imprimir("hallo");
         a = a + 1;
+	b = b + 2;
     mientras(a < 10);
 
     /*mientras(a < 10) hacer

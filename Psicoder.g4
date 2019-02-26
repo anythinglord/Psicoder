@@ -1,3 +1,6 @@
+// Gramatica de Psicoder 
+// no contiene Ambiguedades 
+// Faltan arreglar unas producciones
 grammar Psicoder;
 s           : (f | e)* TK_FUNCIONPRINCIPAL code TK_FINPRINCIPAL
             | EOF
